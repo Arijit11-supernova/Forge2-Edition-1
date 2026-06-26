@@ -1,0 +1,41 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": "./.openclaw/workspace",
+      "model": {
+        "primary": "openrouter/qwen/qwen-2.5-7b-instruct"
+      },
+      "models": {
+        "openrouter/qwen/qwen-2.5-7b-instruct": {}
+      }
+    }
+  },
+  "models": {
+    "providers": {
+      "openrouter": {
+        "apiKey": "<YOUR_OPENROUTER_API_KEY>",
+        "baseUrl": "https://openrouter.ai/api/v1",
+        "models": [
+          { "id": "qwen/qwen-2.5-7b-instruct", "name": "qwen/qwen-2.5-7b-instruct" }
+        ]
+      }
+    }
+  },
+  "channels": {
+    "slack": {
+      "enabled": true,
+      "botToken": "<YOUR_SLACK_BOT_TOKEN>",
+      "appToken": "<YOUR_SLACK_APP_TOKEN>",
+      "groupPolicy": "allowlist",
+      "channels": {
+        "<AGENT_CODER_CHANNEL_ID>": { "enabled": true },
+        "<AGENT_ORCHESTRATOR_CHANNEL_ID>": { "enabled": true },
+        "<CI_CD_CHANNEL_ID>": { "enabled": true },
+        "<HUMAN_REVIEW_CHANNEL_ID>": { "enabled": true }
+      }
+    }
+  },
+  "plugins": {
+    "allow": ["slack", "duckduckgo", "openrouter"]
+  }
+}
